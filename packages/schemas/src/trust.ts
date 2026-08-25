@@ -27,12 +27,24 @@ export const TrustPublisherSchema = z.object({
 });
 export type TrustPublisher = z.infer<typeof TrustPublisherSchema>;
 
+export const QuorumPolicySchema = z.object({
+  minMonitors: z.number().int().positive().default(1),
+  agreementThresholdBps: z.number().int().min(0).max(10000).default(6600),
+  tieBreakerRule: z.enum(["worst_case", "majority"]).default("worst_case"),
+});
+export type QuorumPolicy = z.infer<typeof QuorumPolicySchema>;
+
 export const TrustPolicySchema = z.object({
   version: PositiveVersionSchema,
   policyId: z.string().min(1).max(128),
   publishers: z
     .array(TrustPublisherSchema)
     .min(1, "Trust policy must declare at least one publisher"),
+  quorum: QuorumPolicySchema.default({
+    minMonitors: 1,
+    agreementThresholdBps: 6600,
+    tieBreakerRule: "worst_case",
+  }),
   checksum: z.string().max(128).optional(),
 });
 export type TrustPolicy = z.infer<typeof TrustPolicySchema>;

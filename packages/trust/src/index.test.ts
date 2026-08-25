@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { IMPLEMENTATION_PHASE, PACKAGE_NAME } from "./index";
+import { IMPLEMENTATION_PHASE, PACKAGE_NAME } from "./index.js";
 
 describe("@blastradius/trust", () => {
-  it("is a phase 0 identity export only", () => {
+  it("exports Phase 3 package metadata", () => {
     expect(PACKAGE_NAME).toBe("@blastradius/trust");
-    expect(IMPLEMENTATION_PHASE).toBe(0);
+    expect(IMPLEMENTATION_PHASE).toBe(3);
   });
 });

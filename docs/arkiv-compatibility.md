@@ -64,11 +64,23 @@ Official Braga reference (retired — **do not use as defaults**):
 - Ideathon MCP `https://ideathon-mcp.arkiv.network/api/mcp` — tools `list_tracks`, `get_doc`, `search_kb`, `review_my_idea`. Docs fetched: `network-and-roadmap`, `arkiv-fundamentals`.
 - Official skill `arkiv-best-practices` installed project-locally at `.agents/skills/arkiv-best-practices`.
 
-## Phase 2 access required
+## Phase 2 Implementation Status (2026-08-25)
 
-To pass the real integration gate, this environment needs **one** of:
+The production Arkiv adapter (`packages/arkiv`) has been fully implemented in strict adherence to SDK 0.7.0 and repository invariants:
 
-1. Authorized Arkiv August devnet credentials (RPC URL, chain ID, funded isolated wallets), requested via [Arkiv Discord](https://discord.gg/arkiv); or
-2. An **officially documented** local Arkiv node/testcontainer path.
+1. **Client Construction (`src/client.ts`)**: `createArkivPublicClient` and `createArkivWalletClient` construct `viem` `Chain` definitions dynamically from validated `ArkivRuntimeConfig`. Zero hard-coded network constants exist in the codebase.
+2. **Normalized Readers (`src/reader.ts`)**: `ArkivReader` provides type-safe queries for `DependencyEdge`, `HealthAssertion`, `MonitorMethod`, and `ProtocolResponse`. Every query is namespaced with `project = blastradius-v1` and selects immutable `$creator`, `$owner`, blocks, attributes, and payload.
+3. **Cursor Pagination Engine (`src/reader.ts`)**: Bounded pagination with `maxPages`, `maxRecords`, `AbortSignal` deadlines, and cursor-loop detection returning `BoundedResult` completeness metadata.
+4. **Normalized Writers (`src/writer.ts`)**: `ArkivWriter` publishes all 4 entity types, serializes JSON payloads, maps integer attributes, and enforces a hard domain invariant refusing to extend `HealthAssertion` entities (`HealthAssertionCannotBeExtendedError`).
+5. **Typed Domain Errors (`src/errors.ts`)**: Distinguishes `ArkivQueryUnavailableError` (retryable), `ArkivWriteRejectedError` (non-retryable), and `ArkivWriteUnknownError` (reconciliation required).
+6. **Historical Query Feature Gate (`src/historical.ts`)**: `isHistoricalQuerySupported()` returns `false` and `listHealthAssertionsAtBlock()` throws `ArkivHistoricalQueryNotSupportedError` until verified on live testnet.
 
-Do not invent an endpoint.
+## Real Integration Gate Status: BLOCKED
+
+As documented above:
+- No public testnet exists (Braga retired August 12, 2026; next public testnet September 2026).
+- No live RPC endpoint or funded private devnet wallet credentials are configured in `.env`.
+- Per `AGENTS.md` truthfulness policy, **no in-memory mock or fake Arkiv server** is permitted in production code paths.
+- The unit test suite (`packages/arkiv/src/*.test.ts`) verifies all client factory, schema mapping, lifecycle guards, and error translation logic deterministically.
+- **Access required to unblock real integration test**: Authorized Arkiv devnet credentials (`ARKIV_RPC_URL`, `ARKIV_CHAIN_ID`, isolated private key) via [Arkiv Discord](https://discord.gg/arkiv).
+

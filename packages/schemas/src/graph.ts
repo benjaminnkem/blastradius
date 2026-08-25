@@ -106,6 +106,12 @@ export const GraphLimitsSchema = z.object({
 });
 export type GraphLimits = z.infer<typeof GraphLimitsSchema>;
 
+export interface BoundedResult<T> {
+  items: T[];
+  complete: boolean;
+  truncatedReason?: TruncationReason;
+}
+
 export function createBoundedResultSchema<T extends z.ZodTypeAny>(itemSchema: T) {
   return z.object({
     items: z.array(itemSchema),
