@@ -1,0 +1,22 @@
+{
+  "name": "blastradius",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"apps/**/*.{ts,tsx,js,mjs,css,json}\" \"packages/**/*.{ts,tsx,js,mjs,json}\" \"*.md\" \".github/**/*.{yml,yaml}\" \"docker-compose.yml\"",
+    "format:check": "prettier --check \"apps/**/*.{ts,tsx,js,mjs,css,json}\" \"packages/**/*.{ts,tsx,js,mjs,json}\" \"*.md\" \".github/**/*.{yml,yaml}\" \"docker-compose.yml\"",
+    "check-types": "turbo run check-types",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6",
+    "turbo": "^2.10.11",
+    "typescript": "7.0.2"
+  },
+  "packageManager": "pnpm@11.23.0",
+  "engines": {
+    "node": ">=24"
+  }
+}

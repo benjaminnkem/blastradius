@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #33ff00;
+  --primary: #33ff00;
+  --secondary: #ffb000;
+  --muted: #1f521f;
+  --error: #ff3333;
+  --border: #1f521f;
+  --text-dim: #79a879;
+  --text-neutral: #c8d2c8;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text-neutral);
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--bg);
+}
