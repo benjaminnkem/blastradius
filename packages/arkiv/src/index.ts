@@ -9,6 +9,10 @@ export const PACKAGE_NAME = "@blastradius/arkiv" as const;
 export const ARKIV_ADAPTER_STATUS = "not_implemented" as const;
 export const IMPLEMENTATION_PHASE = 0 as const;
 
-export function isArkivAdapterImplemented(): boolean {
-  return ARKIV_ADAPTER_STATUS === "implemented";
+/**
+ * Returns true only when the Phase 2 adapter is implemented.
+ * Phase 0: always false.
+ */
+export function isArkivAdapterImplemented(): false {
+  return false;
 }

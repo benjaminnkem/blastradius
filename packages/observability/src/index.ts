@@ -1,1 +1,1 @@
-export { createLogger, REDACT_PATHS, type Logger } from "./logger";
+export { createLogger, REDACT_PATHS, type Logger } from "./logger.js";

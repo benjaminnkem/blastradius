@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { formatStatus } from "./status";
+import { formatStatus } from "./status.js";
 
 const program = new Command();
 

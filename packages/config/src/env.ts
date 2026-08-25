@@ -18,6 +18,10 @@ export const envSchema = z
       .string()
       .min(1)
       .regex(/^[a-z0-9-]+$/, "BLASTRADIUS_PROJECT must be lowercase alphanumeric with hyphens")
+      .refine((v) => !v.startsWith("0x"), {
+        message:
+          "BLASTRADIUS_PROJECT must not start with '0x' — check that a private key or address was not accidentally used",
+      })
       .default(DEFAULT_PROJECT_NAMESPACE),
     APP_VERSION: optionalNonEmptyString,
     ARKIV_RPC_URL: optionalUrl,

@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { loadEnv } from "@blastradius/config";
 import { createLogger } from "@blastradius/observability";
-import { AppModule } from "./app.module";
+import { AppModule } from "./app.module.js";
 
 async function bootstrap(): Promise<void> {
   const env = loadEnv();
