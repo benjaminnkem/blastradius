@@ -1,4 +1,4 @@
-import type { AppEnv } from "./env.js";
+import { type AppEnv, loadEnv } from "./env.js";
 
 export interface ArkivRuntimeConfig {
   networkName?: string;
@@ -12,7 +12,7 @@ export interface ArkivRuntimeConfig {
   healthAssertionTtlSec: number;
 }
 
-export function getArkivRuntimeConfig(env: AppEnv): ArkivRuntimeConfig | null {
+export function getArkivRuntimeConfig(env: AppEnv = loadEnv()): ArkivRuntimeConfig | null {
   if (!env.ARKIV_RPC_URL || env.ARKIV_CHAIN_ID === undefined) {
     return null;
   }
@@ -36,7 +36,7 @@ export interface RedisRuntimeConfig {
   cacheDefaultTtlSec: number;
 }
 
-export function getRedisRuntimeConfig(env: AppEnv): RedisRuntimeConfig | null {
+export function getRedisRuntimeConfig(env: AppEnv = loadEnv()): RedisRuntimeConfig | null {
   if (!env.REDIS_URL) {
     return null;
   }
@@ -59,7 +59,7 @@ export interface ApiRuntimeConfig {
   shutdownGraceMs: number;
 }
 
-export function getApiRuntimeConfig(env: AppEnv): ApiRuntimeConfig {
+export function getApiRuntimeConfig(env: AppEnv = loadEnv()): ApiRuntimeConfig {
   const corsOrigins =
     env.CORS_ALLOWED_ORIGINS === "*"
       ? ["*"]
@@ -88,7 +88,7 @@ export interface GraphLimitsConfig {
   deadlineMs: number;
 }
 
-export function getGraphLimitsConfig(env: AppEnv): GraphLimitsConfig {
+export function getGraphLimitsConfig(env: AppEnv = loadEnv()): GraphLimitsConfig {
   return {
     maxDepth: env.GRAPH_MAX_DEPTH,
     maxNodes: env.GRAPH_MAX_NODES,
@@ -106,7 +106,7 @@ export interface WorkerRuntimeConfig {
   healthPort: number;
 }
 
-export function getWorkerRuntimeConfig(env: AppEnv): WorkerRuntimeConfig {
+export function getWorkerRuntimeConfig(env: AppEnv = loadEnv()): WorkerRuntimeConfig {
   return {
     concurrency: env.MONITOR_WORKER_CONCURRENCY,
     attempts: env.MONITOR_JOB_ATTEMPTS,
