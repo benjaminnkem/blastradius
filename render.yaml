@@ -1,6 +1,6 @@
 services:
   # ============================================================================
-  # BlastRadius — NestJS Public Read API Service
+  # BlastRadius — NestJS Public Read API Service (Render Free Tier)
   # ============================================================================
   - type: web
     name: blastradius-api
@@ -28,46 +28,10 @@ services:
       - key: BASE_RPC_TERTIARY
         value: https://1rpc.io/base
       - key: REDIS_URL
-        fromService:
-          type: redis
-          name: blastradius-redis
-          property: connectionString
-
-  # ============================================================================
-  # BlastRadius — Background Observation Monitor Daemon
-  # ============================================================================
-  - type: worker
-    name: blastradius-monitor
-    runtime: docker
-    dockerfilePath: apps/monitor/Dockerfile
-    dockerContext: .
-    plan: starter
-    region: oregon
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: ARKIV_RPC_URL
-        value: https://rpc.kaolin.arkiv.network
-      - key: ARKIV_CHAIN_ID
-        value: "1001"
-      - key: ARKIV_PROJECT_NAMESPACE
-        value: blastradius-v1
-      - key: BASE_RPC_PRIMARY
-        value: https://mainnet.base.org
-      - key: BASE_RPC_SECONDARY
-        value: https://base.llamarpc.com
-      - key: BASE_RPC_TERTIARY
-        value: https://1rpc.io/base
-      - key: MONITOR_PRIVATE_KEY
         sync: false
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: blastradius-redis
-          property: connectionString
 
   # ============================================================================
-  # BlastRadius — Transient Redis Service (BullMQ & Locks)
+  # BlastRadius — Redis (Render Free Tier - 25 days, or use free Upstash Redis)
   # ============================================================================
   - type: redis
     name: blastradius-redis
