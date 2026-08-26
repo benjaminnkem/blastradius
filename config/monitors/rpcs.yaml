@@ -1,0 +1,18 @@
+version: 1
+targets:
+  - type: rpc
+    targetId: base-mainnet-rpc-cluster
+    dependencyId: "rpc:base:8453"
+    chainId: 8453
+    providers:
+      - id: base-official
+        url: "https://mainnet.base.org"
+        weight: 1
+      - id: llamarpc
+        url: "https://base.llamarpc.com"
+        weight: 1
+    methodId: rpc-provider-v1
+    methodVersion: 1
+    latencyThresholdMs: 1500
+    sampleIntervalSec: 15
+    enabled: true

@@ -1,0 +1,33 @@
+version: 1
+targets:
+  - type: oracle
+    targetId: base-mainnet-chainlink-eth-usd
+    dependencyId: "chainlink:eth-usd:8453"
+    chainId: 8453
+    feedAddress: "0x71041dddad35715f681426aae1010a2669acb4aa"
+    feedDecimals: 8
+    heartbeatSec: 1200
+    deviationBps: 50
+    methodId: chainlink-feed-v1
+    methodVersion: 1
+    rpcUrls:
+      - "https://mainnet.base.org"
+      - "https://base.llamarpc.com"
+    sampleIntervalSec: 30
+    enabled: true
+
+  - type: oracle
+    targetId: base-mainnet-chainlink-usdc-usd
+    dependencyId: "chainlink:usdc-usd:8453"
+    chainId: 8453
+    feedAddress: "0x7e860098f58bBfc8648a4311b374B1Db67275757"
+    feedDecimals: 8
+    heartbeatSec: 86400
+    deviationBps: 25
+    methodId: chainlink-feed-v1
+    methodVersion: 1
+    rpcUrls:
+      - "https://mainnet.base.org"
+      - "https://base.llamarpc.com"
+    sampleIntervalSec: 60
+    enabled: true
