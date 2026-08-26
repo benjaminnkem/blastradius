@@ -10,9 +10,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BlastRadius",
+  title: "BlastRadius // DeFi Dependency & Blast Radius Intelligence",
   description:
-    "DeFi dependency graph and ephemeral health attestation. Phase 0 scaffold — product UI is not implemented.",
+    "Cryptographically provenanced DeFi dependency topology monitor and blast radius intelligence engine powered by Arkiv.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: ["/favicon.svg"],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
