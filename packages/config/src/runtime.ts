@@ -67,9 +67,12 @@ export function getApiRuntimeConfig(env: AppEnv = loadEnv()): ApiRuntimeConfig {
           .map((s) => s.trim())
           .filter(Boolean);
 
+  const port = env.PORT ?? env.API_PORT;
+  const host = env.HOST ?? env.API_HOST ?? "0.0.0.0";
+
   return {
-    host: env.API_HOST,
-    port: env.API_PORT,
+    host,
+    port,
     publicBaseUrl: env.API_PUBLIC_BASE_URL,
     corsOrigins,
     rateLimitWindowSec: env.API_RATE_LIMIT_WINDOW_SEC,

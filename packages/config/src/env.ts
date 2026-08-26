@@ -95,7 +95,9 @@ export const envSchema = z
     ),
 
     // API
-    API_HOST: z.string().min(1).default("127.0.0.1"),
+    PORT: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(65535).optional()),
+    HOST: optionalNonEmptyString,
+    API_HOST: z.string().min(1).default("0.0.0.0"),
     API_PORT: z.coerce.number().int().min(1).max(65535).default(3001),
     MONITOR_HEALTH_PORT: z.coerce.number().int().min(1).max(65535).default(3002),
     API_PUBLIC_BASE_URL: optionalUrl,
