@@ -17,7 +17,8 @@
     "@blastradius/observability": "workspace:*",
     "@blastradius/schemas": "workspace:*",
     "bullmq": "^5.41.0",
-    "ioredis": "^5.4.2"
+    "ioredis": "^5.4.2",
+    "viem": "2.55.19"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

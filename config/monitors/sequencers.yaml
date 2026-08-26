@@ -1,0 +1,17 @@
+version: 1
+targets:
+  - type: sequencer
+    targetId: base-mainnet-sequencer
+    dependencyId: "sequencer:base"
+    chainId: 8453
+    methodId: sequencer-health-v1
+    methodVersion: 1
+    rpcUrls:
+      - "https://mainnet.base.org"
+      - "https://base.llamarpc.com"
+    thresholds:
+      warningSafeLagSec: 120
+      criticalSafeLagSec: 600
+      maxBlockGapSec: 60
+    sampleIntervalSec: 15
+    enabled: true

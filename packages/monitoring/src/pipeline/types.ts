@@ -36,8 +36,14 @@ export interface RawObservation {
   evidence?: EvidenceHash;
 }
 
+export interface MonitorObservationOptions {
+  timeoutMs?: number;
+  nowSec?: number;
+  [key: string]: unknown;
+}
+
 export interface MonitorPlugin<TConfig extends MonitorTargetConfig = MonitorTargetConfig> {
   readonly type: TConfig["type"];
-  observe(target: TConfig): Promise<RawObservation>;
+  observe(target: TConfig, options?: MonitorObservationOptions): Promise<RawObservation>;
   normalize(target: TConfig, raw: RawObservation): HealthObservation;
 }

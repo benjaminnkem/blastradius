@@ -348,6 +348,9 @@ importers:
       ioredis:
         specifier: ^5.4.2
         version: 5.11.1
+      viem:
+        specifier: 2.55.19
+        version: 2.55.19(typescript@7.0.2)(zod@4.4.3)
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
