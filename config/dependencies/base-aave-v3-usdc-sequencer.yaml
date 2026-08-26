@@ -1,0 +1,23 @@
+schemaVersion: 1
+edgeId: base-aave-v3-vault-usdc-to-sequencer
+dependent:
+  id: "aave:vault:usdc"
+  type: vault
+dependency:
+  id: "sequencer:base"
+  type: sequencer
+protocolId: aave-v3
+chainId: 8453
+criticalityBps: 9000
+propagationBps: 10000
+sourceKind: curator
+name: "Aave v3 Base USDC Vault Sequencer Dependency"
+description: "USDC deposit, withdraw, and liquidation execution on Base depends directly on Base sequencer availability."
+evidence:
+  - type: official_docs
+    url: "https://docs.aave.com/developers/deployed-contracts/v3-mainnet/base"
+    description: "Official Aave v3 Base deployment parameters"
+contractReferences:
+  - chainId: 8453
+    address: "0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"
+    role: pool_addresses_provider

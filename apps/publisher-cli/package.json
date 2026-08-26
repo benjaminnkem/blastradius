@@ -15,8 +15,13 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@blastradius/arkiv": "workspace:*",
     "@blastradius/config": "workspace:*",
-    "commander": "15.0.0"
+    "@blastradius/graph": "workspace:*",
+    "@blastradius/schemas": "workspace:*",
+    "@blastradius/trust": "workspace:*",
+    "commander": "15.0.0",
+    "viem": "2.55.19"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

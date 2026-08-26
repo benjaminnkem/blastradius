@@ -1,0 +1,38 @@
+version: 1
+policyId: blastradius-trust-v1
+quorum:
+  minMonitors: 2
+  agreementThresholdBps: 6600
+  tieBreakerRule: worst_case
+publishers:
+  - id: official-curator
+    name: "BlastRadius Core Curator"
+    address: "0x1111111111111111111111111111111111111111"
+    roles:
+      - curator
+      - monitor
+    enabled: true
+    scopes:
+      chains:
+        - 8453
+        - 1
+  - id: secondary-monitor
+    name: "Independent Monitor Node"
+    address: "0x2222222222222222222222222222222222222222"
+    roles:
+      - monitor
+    enabled: true
+    scopes:
+      chains:
+        - 8453
+  - id: aave-governance
+    name: "Aave Protocol Governance"
+    address: "0x3333333333333333333333333333333333333333"
+    roles:
+      - protocol
+    enabled: true
+    scopes:
+      protocols:
+        - aave-v3
+      chains:
+        - 8453

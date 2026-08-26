@@ -1,0 +1,29 @@
+schemaVersion: 1
+edgeId: base-aave-v3-vault-weth-to-chainlink-oracle
+dependent:
+  id: "aave:vault:weth"
+  type: vault
+dependency:
+  id: "chainlink:eth-usd:8453"
+  type: oracle
+protocolId: aave-v3
+chainId: 8453
+criticalityBps: 10000
+propagationBps: 10000
+sourceKind: curator
+name: "Aave v3 Base WETH Vault Oracle Dependency"
+description: "Aave v3 Base Pool uses Chainlink ETH/USD price feed (0x71041dddad35715f681426aae1010a2669acb4aa) for collateral valuation and liquidation health factors."
+evidence:
+  - type: official_docs
+    url: "https://docs.aave.com/developers/deployed-contracts/v3-mainnet/base"
+    description: "Official Aave v3 Base deployed contracts documentation"
+  - type: official_contract
+    url: "https://basescan.org/address/0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"
+    description: "Aave v3 PoolAddressesProvider on Base"
+contractReferences:
+  - chainId: 8453
+    address: "0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"
+    role: pool_addresses_provider
+  - chainId: 8453
+    address: "0x71041dddad35715f681426aae1010a2669acb4aa"
+    role: chainlink_eth_feed

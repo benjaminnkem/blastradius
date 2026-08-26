@@ -1,0 +1,24 @@
+schemaVersion: 1
+edgeId: base-aave-v3-liquidation-operation-to-vault-weth
+dependent:
+  id: "aave:operation:liquidation"
+  type: protocol
+dependency:
+  id: "aave:vault:weth"
+  type: vault
+protocolId: aave-v3
+operation: liquidation
+chainId: 8453
+criticalityBps: 10000
+propagationBps: 10000
+sourceKind: curator
+name: "Aave v3 Liquidation Operation WETH Dependency"
+description: "Liquidation engine on Aave v3 Base requires solvent and accurately priced WETH collateral pool."
+evidence:
+  - type: official_docs
+    url: "https://docs.aave.com/developers/core-contracts/pool"
+    description: "Aave v3 Pool Contract Specification"
+contractReferences:
+  - chainId: 8453
+    address: "0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"
+    role: pool_addresses_provider
