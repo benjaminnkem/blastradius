@@ -2,28 +2,121 @@
 
 :root {
   --bg: #0a0a0a;
+  --bg-pane: #0f130f;
   --fg: #33ff00;
+  --fg-dim: #79a879;
+  --fg-muted: #1f521f;
+  --text-neutral: #c8d2c8;
   --primary: #33ff00;
   --secondary: #ffb000;
-  --muted: #1f521f;
+  --amber: #ffb000;
   --error: #ff3333;
+  --red: #ff3333;
   --border: #1f521f;
-  --text-dim: #79a879;
-  --text-neutral: #c8d2c8;
+  --border-bright: #33ff00;
+  --border-amber: #ffb000;
+  --border-red: #ff3333;
+  --glow-primary: 0 0 8px rgba(51, 255, 0, 0.4);
+  --glow-amber: 0 0 8px rgba(255, 176, 0, 0.4);
+  --glow-red: 0 0 8px rgba(255, 51, 51, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  border-radius: 0px !important;
 }
 
 html,
 body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text-neutral);
+  font-family:
+    var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   min-height: 100%;
-}
-
-body {
   margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
   background: var(--primary);
   color: var(--bg);
+}
+
+/* CRT Scanlines Overlay */
+.scanlines-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanlines-overlay {
+    display: none;
+  }
+  .cursor-blink {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Blinking Terminal Cursor */
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  background-color: var(--primary);
+  vertical-align: -0.15em;
+  animation: cursor-blink 1s step-start infinite;
+}
+
+.cursor-blink-amber {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  background-color: var(--amber);
+  vertical-align: -0.15em;
+  animation: cursor-blink 1s step-start infinite;
+}
+
+/* Text Glow Utilities */
+.text-glow-green {
+  color: var(--primary);
+  text-shadow: var(--glow-primary);
+}
+
+.text-glow-amber {
+  color: var(--amber);
+  text-shadow: var(--glow-amber);
+}
+
+.text-glow-red {
+  color: var(--red);
+  text-shadow: var(--glow-red);
+}
+
+/* Focus outline */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
