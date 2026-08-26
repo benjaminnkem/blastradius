@@ -88,9 +88,13 @@ export default function LandingPage() {
               <Link href="/system?filter=incidents">
                 <BracketButton variant="secondary">View Quorum Incidents</BracketButton>
               </Link>
-              <a href="http://localhost:4000/api/docs" target="_blank" rel="noreferrer">
+              <Link
+                href="https://blastradius-api-q0gp.onrender.com/api/docs"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <BracketButton variant="ghost">OpenAPI / Swagger</BracketButton>
-              </a>
+              </Link>
             </div>
           </div>
 
