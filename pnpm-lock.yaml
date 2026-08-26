@@ -62,6 +62,9 @@ importers:
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
+      tsx:
+        specifier: 4.23.12
+        version: 4.23.12
       viem:
         specifier: 2.55.19
         version: 2.55.19(typescript@7.0.2)(zod@4.4.3)
@@ -84,9 +87,6 @@ importers:
       eslint:
         specifier: 10.9.1
         version: 10.9.1(jiti@2.7.0)
-      tsx:
-        specifier: 4.23.12
-        version: 4.23.12
       typescript:
         specifier: 7.0.2
         version: 7.0.2
@@ -126,6 +126,9 @@ importers:
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
+      tsx:
+        specifier: 4.23.12
+        version: 4.23.12
     devDependencies:
       '@nestjs/testing':
         specifier: 11.2.3
@@ -142,9 +145,6 @@ importers:
       eslint:
         specifier: 10.9.1
         version: 10.9.1(jiti@2.7.0)
-      tsx:
-        specifier: 4.23.12
-        version: 4.23.12
       typescript:
         specifier: 7.0.2
         version: 7.0.2
