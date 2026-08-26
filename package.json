@@ -2,8 +2,8 @@
   "name": "blastradius",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "build": "node init && turbo run build",
+    "dev": "node init && turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"apps/**/*.{ts,tsx,js,mjs,css,json}\" \"packages/**/*.{ts,tsx,js,mjs,json}\" \"*.md\" \".github/**/*.{yml,yaml}\" \"docker-compose.yml\"",
     "format:check": "prettier --check \"apps/**/*.{ts,tsx,js,mjs,css,json}\" \"packages/**/*.{ts,tsx,js,mjs,json}\" \"*.md\" \".github/**/*.{yml,yaml}\" \"docker-compose.yml\"",
