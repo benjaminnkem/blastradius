@@ -17,6 +17,7 @@ export interface ResolvedEdge {
   dependencyType: DependencyType;
   chainId?: number;
   protocolId?: string;
+  operation?: string;
   version: number;
   state: EdgeState;
   criticalityBps: number;
@@ -104,6 +105,7 @@ export function resolveCurrentEdges(
       dependencyType: newest.attributes.dependency_type,
       chainId: newest.attributes.chain_id,
       protocolId: newest.attributes.protocol_id,
+      operation: newest.attributes.operation,
       version: newest.attributes.version,
       state: newest.attributes.state,
       criticalityBps: newest.attributes.criticality_bps,

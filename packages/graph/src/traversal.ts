@@ -212,7 +212,7 @@ export function computeBlastRadius(input: ComputeBlastRadiusInput): BlastRadiusR
       }
 
       // If node is an operation, record the path
-      if (edge.dependentType === "operation") {
+      if (edge.dependentType === "operation" || Boolean(edge.operation)) {
         const protocolId = edge.protocolId ?? "unknown-protocol";
         const existing = pathsByOperation.get(edge.dependentId) ?? {
           operationId: edge.dependentId,

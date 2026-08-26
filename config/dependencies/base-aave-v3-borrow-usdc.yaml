@@ -2,7 +2,7 @@ schemaVersion: 1
 edgeId: base-aave-v3-borrow-operation-to-vault-usdc
 dependent:
   id: "aave:operation:borrow"
-  type: protocol
+  type: operation
 dependency:
   id: "aave:vault:usdc"
   type: vault

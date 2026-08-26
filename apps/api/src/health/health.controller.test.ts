@@ -1,25 +1,19 @@
-import "reflect-metadata";
-import { Test } from "@nestjs/testing";
 import { describe, expect, it } from "vitest";
-import { HealthController } from "./health.controller";
+import { ArkivService } from "../arkiv/arkiv.service.js";
+import { HealthController } from "./health.controller.js";
 
 describe("HealthController", () => {
-  it("reports process liveness without claiming product data", async () => {
-    const moduleRef = await Test.createTestingModule({
-      controllers: [HealthController],
-    }).compile();
-    const controller = moduleRef.get(HealthController);
+  it("returns live status ok", () => {
+    const arkivService = new ArkivService();
+    const controller = new HealthController(arkivService);
     expect(controller.live()).toEqual({ status: "ok" });
   });
 
-  it("does not report ready while the Arkiv adapter is unimplemented", async () => {
-    const moduleRef = await Test.createTestingModule({
-      controllers: [HealthController],
-    }).compile();
-    const controller = moduleRef.get(HealthController);
-    const body = controller.ready();
-    expect(body.status).toBe("not_ready");
-    expect(body.reason).toBe("phase_0_scaffold");
-    expect(body.checks.arkiv).toBe("unconfigured");
+  it("returns ready status", () => {
+    const arkivService = new ArkivService();
+    const controller = new HealthController(arkivService);
+    const probe = controller.ready();
+    expect(probe.status).toBe("ok");
+    expect(probe.checks).toBeDefined();
   });
 });

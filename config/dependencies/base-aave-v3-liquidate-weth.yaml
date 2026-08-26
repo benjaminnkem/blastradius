@@ -2,7 +2,7 @@ schemaVersion: 1
 edgeId: base-aave-v3-liquidation-operation-to-vault-weth
 dependent:
   id: "aave:operation:liquidation"
-  type: protocol
+  type: operation
 dependency:
   id: "aave:vault:weth"
   type: vault

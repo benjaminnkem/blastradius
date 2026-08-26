@@ -12,19 +12,27 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@blastradius/arkiv": "workspace:*",
     "@blastradius/config": "workspace:*",
+    "@blastradius/graph": "workspace:*",
     "@blastradius/observability": "workspace:*",
+    "@blastradius/schemas": "workspace:*",
     "@blastradius/shared": "workspace:*",
+    "@blastradius/trust": "workspace:*",
     "@nestjs/common": "11.2.3",
     "@nestjs/core": "11.2.3",
     "@nestjs/platform-express": "11.2.3",
+    "@nestjs/swagger": "11.0.6",
+    "ioredis": "^5.4.2",
     "reflect-metadata": "0.2.2",
-    "rxjs": "7.8.2"
+    "rxjs": "7.8.2",
+    "viem": "2.55.19"
   },
   "devDependencies": {
     "@nestjs/testing": "11.2.3",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/express": "^5.0.0",
     "@types/node": "26.3.0",
     "eslint": "10.9.1",
     "tsx": "4.23.12",
